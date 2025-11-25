@@ -21,7 +21,9 @@
       <div class="form-floating mb-3">
         
         <!-- Select element for saluation -->
-        <select name="inputSelect" class="form-select" id="inputSelect"></select>
+        <select name="inputSelect" class="form-select" id="inputSelect">
+          <!-- Options added dynamically -->
+        </select>
         <label for="inputSelect">Salutation:</label>
 
       </div>
@@ -44,11 +46,35 @@
   <script src="script.js"></script>
 
   <script>
+    // 1. Populate the selection of salutations
+    const arr = ftnSalutation();
+    
+    // populate inputSelect dynamically
+    const selectList = document.getElementById("inputSelect");
 
-    // implement your statement(s) here
-    // e.g. statement 1
-    // e.g. statement 2
+    selectList.options[0] = new Option("Please select", "");
 
+    // Iterate through arr to dynamically inject the options (for loop)
+    for (let index = 0; index < arr.length; index++) {
+      // Selection should start from index postion 1
+      // Index position 0 from selectList is already applied
+      selectList.options[index + 1] = new Option(arr[index], arr[index]);
+    }
+
+    // 2. Process the user's inputs
+    function ftnProcessName(){
+      const selectedChoice = document.getElementById("inputSelect").value;
+      const uName = document.getElementById("inputName").value;
+
+      const validated = validateInputs(selectedChoice, uName);
+      console.log(validated);
+          
+      if(!validated)
+        return alert("All inputs needs to be completed.");
+
+      // call ftnGreeting to display our feedback
+      return alert(ftnGreeting(selectedChoice, uName));
+    }
   </script>
   
   <!-- Bootstrap JavaScript Library -->
