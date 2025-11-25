@@ -8,6 +8,10 @@
 */
 function ftnSalutation(){
   //  implement your statement(s) here
+  // * ["Mr.", "Mrs.", "Ms.", "Dr."]
+  // * [ 0 ] [ 1 ] [ 2 ] [ 3 ]
+  return new Array("Mr.", "Mrs.", "Ms.");
+
 }
 
 /* 
@@ -18,6 +22,8 @@ function ftnSalutation(){
 */
 const ftnGreeting = (salutation, user) => {
     //  implement your statement(s) here
+    return `Hi, ${salutation} ${user}!`;
+    
 }
 
 /*
@@ -29,3 +35,12 @@ Hint:
 - validateInputs returns false if either choice or name is incorrectly filled
 - validateInputs returns true if both choice and name are correctly filled
 */
+
+function validateInputs(choice = "", name = ""){
+
+  if(choice === "" || name === "")
+    return;
+
+  // otherwise, return true
+  return true;
+}
