@@ -4,34 +4,92 @@
 
 // Basic array
 // This is just an example, the best practice is to store a single data type to an array
-
+const myArray = [1, 2, 3, 4, "Hello", true, null];
+console.log(myArray.length);
 
 // B) ARRAY METHODS
 
 // i - map function of an array
 // Implement your code here
+const mappedArray = [1, 2, 3, 4, 5, 6];
 
+const multiplyArrBy10 = mappedArray.map(item => item * 10); /* Short-hand of the arrow fn */
+console.log(multiplyArrBy10);
 
 // ii - filter function of an array
 // Implement your code here
+const vowels = ["a", "e", "i", "o"];
+
+const filteredVowels = vowels.filter(vowel => vowel === "a" || vowel === "u");
+console.log(filteredVowels);
 
 
 // iii - sort function of an array
 // Implement your code here
+const nums = [1, 3, 2, 4, 5, 6];
+const names = ["James", "Chris", "Max", "Lenon"];
 
 // Sort by descending order
 // Implement your code here
+const descendNums = nums.sort((a, b) => a > b ? -1 : 1);
+console.log("descendNums", descendNums);
+
+const ascendNums = nums.sort((a, b) => a > b ? 1 : -1); /* num.sort() achieves the same: ascending sort */
+console.log("ascendNums", ascendNums);
 
 // Sort by descending order
 // Implement your code here
+const descendNames = names.sort((a, b) => a > b ? -1 : 1);
+console.log(descendNames);
 
+const ascendNames = names.sort(); /* By default, array.sort() sorts in ascending order */
+console.log(ascendNames);
 
 // iv - reduce function of an array
 // Implement your code here
+const numbers = new Array(1, 2, 3, 4);
+const product_of_arr = numbers.reduce((a, b) => a * b); // 24
+console.log(product_of_arr);
 
 // another approach of applying a reuduce function of an array
 // Implement your code here
+const arr = new Array(2, 3, 4, 5);
 
+function product(a, b) {
+    return a * b;
+}
+
+const resultOfProduct = arr.reduce(product);
+console.log(resultOfProduct);
+
+// append elements to an EXISTING array
+const teamList = ["Tanna", "Shalyn", "Zhang", "Frnacis"]; // 0 -3
+teamList.push("Muhaimin");
+console.log(teamList.length);
+console.log(teamList);
+
+// remove the last element of an EXISTING array
+teamList.pop();                // intrinsically known to remove 1st element
+console.log(teamList.length);  // 0-3
+console.log(teamList);         // 4 names 
+
+// shift and unshift elements of an array
+const mag7 = ["FB", "AMZN", "AAPL", "TSLA", "GOOG"];
+console.log(mag7.shift());     // FB removed
+console.log(mag7);             // AMZN, AAPL, NFLX, GOOG
+// Unshift (prepend META, NVDA, MSFT)
+mag7.unshift("META,", "NVDA", "MSFT");
+console.log(mag7);
+
+// Slice data (insert or replace data in an array)
+const bballTeam = ["Jordan", "Pippen", "Bill"];  // 0 - 2
+const index = 2;
+const newPlayer = "Steve Carr";                   
+bballTeam.splice(index, 0, newPlayer);           // ["Jordan", "Pippen", "Steve Carr", "Bill" ]
+console.log(bballTeam);
+
+bballTeam.splice(bballTeam.length - 1, 1, "Rodman"); // Replace "Bill" with "Rodman"
+console.log(bballTeam);
 
 // ---------
 // 2. LOOPS
@@ -40,14 +98,51 @@
 // i - for loops (Simulate a countdown using a for loop)
 // Implement your code here
 
+// Do a count up (1 - 10)
+const max = 10;
+for (let index = 0; index <= max; index++) {
+    console.log("index");
+    
+}
+
+// change the index, the condition and the step are (variables that can change)
+const max100 = 100;
+for (let index = 10; index <= max100 ; index += 10) {
+    console.log(index); // 10, 20, 30, 40, 50 ... 100
+    
+}
+
+// count down (10 - 1); TERNARY operation
+for (let index = max; index >= 0 ; index--) {
+    // if(condition) ? execute if condition block : else block (ternary operation)
+    (index === 0 ) ? console.log("Merry X'mas") : console.log(index);
+}
+
 
 // ii - for-each loop
 // Implement your code here
+const tickerSymbols = ["META", "AMZN", "GOOG", "MSFT"];
 
+ for (let index = 0; index < tickerSymbols.length; index++) {
+    console.log(`${index + 1}. ${tickerSymbols[index]}`);   
+ } 
 
-// iii - do-while loop (execute first, check for the condition later)
+tickerSymbols.forEach((element, index) => { console.log(`${index + 1}. ${element}`) });
+
+// iii - do-while loop (do first, check later)
 // Implement your code here
+let i = 0;
+
+do {
+    console.log(i); // print 0 to 10
+    i++;
+} while (i <= 5); 
 
 
 // iv - while loop (check the conditions first before running the while loop)
 // Implement your code here
+let j = 0;
+while (j <= 10) {
+    console.log(j); // print 0 to 10
+    j++;
+}
