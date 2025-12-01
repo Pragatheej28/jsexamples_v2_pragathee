@@ -41,9 +41,12 @@ function ftnRadioMeal(meal) {
 
   let msg = "Thank you.";
 
+  let msg = "Thank you. ";
+
   // TODO: using switch statement to provide the appropriate feedback to the user
   switch (meal) {
     case "Vegetarian":
+<<<<<<< HEAD
       msg = msg + "Please contact us to arrange:";
       break;
     case "Beef":
@@ -51,6 +54,15 @@ function ftnRadioMeal(meal) {
       break;
     case "Chicken":
       msg = msg + "We are serving Chicken Corden Blue.";
+=======
+      msg = msg + "Please contact us to arrange.";
+      break;
+    case "Beef":
+      msg = msg + "We are serving beef wellington.";
+      break;
+    case "Chicken":
+      msg = msg + "We are serving chicken cordon blue.";
+>>>>>>> f9590f637c3e0f0120c70ac04ff5853a182e4710
       break;
     default:
       msg = msg + "No meal preference.";
@@ -60,5 +72,8 @@ function ftnRadioMeal(meal) {
   // TODO: Display the message to the user
   document.getElementById("displayPreference").textContent = msg;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f9590f637c3e0f0120c70ac04ff5853a182e4710
 }

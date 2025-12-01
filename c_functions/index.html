@@ -44,6 +44,7 @@
   <script src="script.js"></script>
 
   <script>
+<<<<<<< HEAD
     // 1. populate the selection of salutations
     const arr = ftnSalutation();
 
@@ -64,17 +65,43 @@
 
     // 2. Process the user's inputs
     function ftnProcessName() {
+=======
+    // 1. Populate the selection of salutations
+    const arr = ftnSalutation();
+    
+    // populate inputSelect dynamically
+    const selectList = document.getElementById("inputSelect");
+
+    selectList.options[0] = new Option("Please select", "");
+
+    // Iterate through arr to dynamically inject the options (for loop)
+    for (let index = 0; index < arr.length; index++) {
+      // Selection should start from index postion 1
+      // Index position 0 from selectList is already applied
+      selectList.options[index + 1] = new Option(arr[index], arr[index]);
+    }
+
+    // 2. Process the user's inputs
+    function ftnProcessName(){
+>>>>>>> f9590f637c3e0f0120c70ac04ff5853a182e4710
       const selectedChoice = document.getElementById("inputSelect").value;
       const uName = document.getElementById("inputName").value;
 
       const validated = validateInputs(selectedChoice, uName);
       console.log(validated);
+<<<<<<< HEAD
 
 
       if(!validated)
         return alert("All inputs needs to be completed.");
 
 
+=======
+          
+      if(!validated)
+        return alert("All inputs needs to be completed.");
+
+>>>>>>> f9590f637c3e0f0120c70ac04ff5853a182e4710
       // call ftnGreeting to display our feedback
       return alert(ftnGreeting(selectedChoice, uName));
     }

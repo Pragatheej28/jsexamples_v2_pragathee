@@ -125,6 +125,7 @@
       for (let index = 0; index < mealPreference.length; index++) {
         if(mealPreference[index].checked){
           mealSelected = true;
+<<<<<<< HEAD
           break; /* prematurely end the for loop */
         }
         
@@ -134,6 +135,16 @@
       // same as: if(validated === true AND mealSelected ===true)
       if(validated && mealSelected) {
         return alert("Thank you. We received your submission");
+=======
+          break;  /* prematurely end the for loop */
+        }
+      }
+
+      // TODO: using logical AND operation to ensure that name is validated == true AND mealSelected == true
+      // Same as: if(validated === true AND mealSelected === true)
+      if(validated && mealSelected) {
+        return alert("Thank you. We received your submission.");
+>>>>>>> f9590f637c3e0f0120c70ac04ff5853a182e4710
       }
 
       return alert("Please complete all inputs.");
