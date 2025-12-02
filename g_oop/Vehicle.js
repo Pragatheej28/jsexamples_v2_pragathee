@@ -37,4 +37,6 @@ class Vehicle{
 
 // console.log(`My second transport has travelled a total of ${myTransport2.getTotalDistance()} km.`);
 
-module.exports = Vehicle; // class Vehicle is exported
+// module.exports = Vehicle; // class Vehicle is exported
+
+export default Vehicle;   // Modern (ES6+) approach to export a JS file
