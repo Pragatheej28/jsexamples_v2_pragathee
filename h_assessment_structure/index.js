@@ -109,18 +109,55 @@ class Field {
    * @param {*} m accept the value of the player's move (UP|DOWN|LEFT|RIGHT)
    */
   updateGame(m = ""){
-    // capture the player's currX and currY position first
-    // update the field to show the player's new position
-    // if the player x and y position is HOLE
-    //    OUT
-    //    process.exit();
-    // if player x and y position is out of the loop
-    //    LOSE
-    //    process.exit();
-    //if the player x and y position === x and y of the HAT (^)
-    //    WIN
-    //    process.exit();
-    // otherwise, move the player to the new x and y position based on move
+    // current position 
+    let {x, y} = this.playerPosition;
+
+    //compute new coordinates based on move
+    if (m === UP) {
+      x -= 1;
+    } else if (m === DOWN) {
+      x +=1;
+    } else if (m === LEFT) {
+      y -=1;
+    } else if (m === RIGHT) {
+      y +=1;
+    } else {
+      // ignore anything that is not a movement key
+      return;
+    }
+
+    // check out-of-bounds using actual field size
+    const maxRows = this.field.length;
+    const maxCols = this.field[0].length;
+
+    if (x < 0 || x >= maxRows || y < 0 || y >= maxCols) {
+      console.log(OUT);
+      this.gamePlay = false;
+      process.exit();
+    }
+
+    // inspect the tile at new position 
+    const tile = this.field[x][y];
+
+    // stepped on an hole
+    if (tile === HOLE) {
+      console.log(LOSE);
+      this.gamePlay = false;
+      process.exit();
+    }
+
+    // reached the hat
+    if (tile === HAT) {
+      console.log(WIN);
+      this.gamePlay = false;
+      process.exit();
+    }
+
+    // Otherwise, move the player to the new position 
+    // mark previous position as grass or leave as path
+    this.field[this.playerPosition.x][this.playerPosition.y] = GRASS;
+
+
   }
 
   //  DONE: start() a method of the class to start the game
