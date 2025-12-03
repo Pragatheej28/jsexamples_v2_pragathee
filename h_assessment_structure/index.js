@@ -20,10 +20,10 @@ const MSG_LEFT = "You moved left.";
 const MSG_RIGHT = "You moved right.";
 const MSG_QUIT = "You quit the game.";
 const MSG_INVALID = "Invalid entry";
-const MSG_WELCOME = "\n**************************\nWelcome to Find Your Hat Game\n**************************\n";
+const MSG_WELCOME = "\n*******************************\nWelcome to Find Your Hat Game\n*******************************\n";
 
 // DONE: WIN / LOSE / OUT / QUIT messages constants
-const WIN = "Congtratulations";
+const WIN = "Congtratulations, you won!";
 const LOSE = "You fell into a hole, you lost!";
 const OUT = "You went out-of-bounds, you lost!";
 
@@ -110,7 +110,7 @@ class Field {
    */
   updateGame(m = ""){
     // current position 
-    let {x, y} = this.playerPosition;
+    let {x,y} = this.playerPosition;
 
     //compute new coordinates based on move
     if (m === UP) {
@@ -157,6 +157,10 @@ class Field {
     // mark previous position as grass or leave as path
     this.field[this.playerPosition.x][this.playerPosition.y] = GRASS;
 
+    // update internal position and field 
+    this.playerPosition = {x,y};
+    this.field[x][y] = PLAYER;
+
 
   }
 
@@ -199,10 +203,10 @@ class Field {
           break;
       }
 
-      if(input ===  QUIT)
+      if(input.toLowerCase() ===  QUIT)
         this.gamePlay = false;   // another way to end program: process.exit();
 
-      this.updateGame(input);
+      this.updateGame(input.toLowerCase());
 
 
     } while (this.gamePlay);
