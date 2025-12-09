@@ -1,4 +1,26 @@
 async function fetchData() {
   // TODO: fetch via async/await
+  try {
+
+    // take note of the prepended keyword await
+    const response = await fetch('https://reqres.in/api/unknown', {
+      headers: { 'x-api-key': 'reqres_96d368b91d474e239cb2982618e4118d' },
+    });
+
+    // Handle errors gracefully
+    if(response.status === 403)
+      throw new Error('Permission denied. Please confirm authentication');
+    else if(!response.ok)
+      throw new Error('Network response is NOT ok.');
+
+    // take note of the prepeded keyword await
+    const result = await response.json();
+    console.log(result.data);
+
+  } catch (error) {
+    // manage the error messages incl. these custom ones
+    console.log(error.message);
+
+  }
 }
 fetchData();
